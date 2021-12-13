@@ -17,7 +17,10 @@ def start_bot():
             for event in updates['result']:
                 update_id = event['update_id'] + 1
                 message = event['message']
-                text = message['text']
+                if 'text' in message:
+                    text = message['text']
+                else:
+                    text = "message must be text"
                 message_id = message['message_id']
                 chat_id = message['chat']['id']
 
